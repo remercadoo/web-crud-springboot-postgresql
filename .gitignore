@@ -1,0 +1,45 @@
+# ---- BACKEND (Spring Boot / Maven) ----
+/target/
+/*.iml
+/.idea/
+*.log
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven
+.mvn/
+!**/src/main/**/application.properties
+
+# ---- FRONTEND (Angular) ----
+/frontend/node_modules/
+/frontend/.angular/cache/
+/frontend/dist/
+/frontend/.output/
+frontend/.env
+
+# Angular build files
+/frontend/.angular/
+frontend/package-lock.json
+frontend/.vscode/
+
+# ---- GENERAL ----
+.DS_Store
+.env
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+*.orig
+
+# ---- OS/Editor Files ----
+Thumbs.db
+ehthumbs.db
+*.sublime-workspace
+*.sublime-project
+.idea/
+.vscode/
+*.code-workspace
+

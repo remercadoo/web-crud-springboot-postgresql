@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Listado de Entidades</h2>
+
+  <div *ngIf="loading">Cargando...</div>
+
+<button (click)="mostrarFormulario = !mostrarFormulario">
+  {{ mostrarFormulario ? 'Cerrar formulario' : 'Crear nueva entidad' }}
+</button>
+
+<app-entidad-form
+  *ngIf="mostrarFormulario"
+  (entidadCreada)="onEntidadCreada()">
+</app-entidad-form>
+
+  <table *ngIf="entidades.length > 0" class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entidad of entidades">
+        <td>{{ entidad.id }}</td>
+        <td>{{ entidad.nombre }}</td>
+        <td>{{ entidad.descripcion }}</td>
+        <td>
+          <button (click)="eliminar(entidad.id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && entidades.length === 0">
+    No hay entidades registradas.
+  </div>
+</div>
+

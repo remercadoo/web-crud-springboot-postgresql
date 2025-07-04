@@ -1,0 +1,20 @@
+<h2>Crear Nueva Entidad</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" formControlName="nombre" />
+    <div *ngIf="enviado && form.controls['nombre'].errors?.['required']">
+      El nombre es obligatorio.
+    </div>
+  </div>
+
+  <div>
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" formControlName="descripcion"></textarea>
+  </div>
+
+  <button type="submit">Crear</button>
+</form>
+
