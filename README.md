@@ -1,64 +1,77 @@
-# Proyecto CRUD Spring Boot + Angular
+# Web CRUD con Spring Boot, PostgreSQL y Angular
 
-Este proyecto es una **prueba técnica** simple de tipo CRUD, desarrollada con Java Spring Boot y Angular 17. Permite realizar operaciones básicas sobre una entidad genérica con persistencia en base de datos PostgreSQL.
+Este proyecto es una prueba técnica que implementa un sistema CRUD (crear, leer, actualizar, eliminar) para una entidad genérica usando:
 
-## 🧱 Tecnologías Utilizadas
-
-- **Backend:** Java 17, Spring Boot, Spring Data JPA, PostgreSQL
-- **Frontend:** Angular 17 (con standalone components)
-- **Base de Datos:** PostgreSQL (Docker)
-- **Cliente DB:** PgAdmin
-- **Documentación API:** Swagger UI
-
-## ✅ Funcionalidades Implementadas
-
-- Listado de entidades
-- Creación de nuevas entidades
-- Eliminación de entidades
-- Comunicación efectiva entre frontend y backend
-- Conexión con PostgreSQL usando JPA
-
-## 🛠️ Instalación
-
-### 1. Levantar PostgreSQL con Docker
-
-```bash
-docker compose up -d
-```
-
-### 2. Levantar Backend
-
-```bash
-cd backend/
-./mvnw spring-boot:run
-```
-
-### 3. Levantar Frontend
-
-```bash
-cd frontend/
-ng serve --port 4201
-```
-
-## 🌐 Endpoints Backend
-
-- `GET /api/entidades`
-- `POST /api/entidades`
-- `DELETE /api/entidades/{id}`
-
-## ⚠️ Puntos a Mejorar
-
-- Agregar funcionalidad de **actualización (PUT)**.
-- Mejorar validaciones de formularios.
-- Separar vistas de listado y formulario mediante **Angular Router**.
-- Mejorar estilos (Angular Material / Bootstrap).
-- Manejo de errores más robusto en frontend.
-- Agregar tests unitarios y de integración.
-
-## 📌 Notas
-
-Este proyecto fue desarrollado como parte de una prueba técnica y no está pensado como un producto final de producción.
+- **Backend**: Spring Boot + PostgreSQL
+- **Frontend**: Angular
+- **Contenedores**: Docker + Docker Compose
 
 ---
 
-© 2025 - Desarrollado por Roberto Mercado
+## 🧱 Estructura del Proyecto
+
+```
+src/
+├── backend/         → Proyecto Spring Boot con acceso a PostgreSQL
+├── frontend/        → Proyecto Angular
+├── docker-compose.yml
+```
+
+---
+
+## ▶️ Cómo ejecutar todo el ambiente
+
+Desde la carpeta `src`, ejecutar:
+
+```bash
+docker compose up --build
+```
+
+Esto levantará:
+
+- PostgreSQL (puerto **5432**)
+- Backend Spring Boot (puerto **8080**)
+- Frontend Angular con `ng serve` (puerto **4200**)
+
+---
+
+## 🌐 URLs de acceso
+
+- **Frontend (Angular)**: http://localhost:4200  
+  CRUD funcional para listar, crear y eliminar entidades.
+
+- **Swagger API Docs (Spring Boot)**: http://localhost:8080/swagger-ui/index.html  
+  Documentación y prueba interactiva de endpoints REST.
+
+- **API Base**: http://localhost:8080/api/entidades  
+  Endpoints CRUD disponibles desde el frontend.
+
+---
+
+## ⚙️ Requisitos previos
+
+- Docker y Docker Compose instalados
+- Puerto `5432`, `8080` y `4200` disponibles
+
+---
+
+## 📝 Mejoras posibles (no aplicadas en esta prueba técnica)
+
+- Usar Nginx para servir Angular en producción (`ng build`)
+- Manejo completo de errores en frontend
+- Agregar autenticación JWT
+- Implementar tests unitarios
+
+---
+
+## 🧹 Para limpiar los contenedores
+
+```bash
+docker compose down -v --remove-orphans
+```
+
+---
+
+## 📄 Licencia
+
+Uso libre para fines de evaluación técnica.

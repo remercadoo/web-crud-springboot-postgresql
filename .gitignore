@@ -26,6 +26,7 @@ frontend/.vscode/
 
 # ---- GENERAL ----
 .DS_Store
+src/.DS_Store
 .env
 *.swp
 *.swo
@@ -42,4 +43,4 @@ ehthumbs.db
 .idea/
 .vscode/
 *.code-workspace
-
+.obsidian/

@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+
   postgres:
     image: postgres:15
     container_name: azurian-postgres
@@ -13,6 +14,35 @@ services:
       POSTGRES_PASSWORD: azurian_pass
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: springboot_backend
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/azurian_db
+      SPRING_DATASOURCE_USERNAME: azurian_user
+      SPRING_DATASOURCE_PASSWORD: azurian_pass
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: angular_frontend_dev
+    ports:
+      - "4201:4201"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    restart: unless-stopped
 
 volumes:
   postgres_data:
